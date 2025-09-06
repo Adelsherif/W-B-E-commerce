@@ -39,16 +39,16 @@
         width: fit-content;
         color: white;
         border-radius: 50px;
-        background-color: #D0473E;
+        background-color: var(--main-color);
         padding: 0px 5px;
       }
       h2{
-        color: #D0473E;
+        color: var(--main-color);
       }
         .price{
           font-size: 1.4em;
           font-weight: 500;
-          color: #D0473E;
+          color: var(--main-color);
           .oldPrice{
             text-decoration: line-through;
             color: rgb(159, 159, 159);
@@ -58,7 +58,7 @@
         max-width: 100%;
         font-size: 1.3em;
         &:last-of-type{
-          color: #D0473E;
+          color: var(--main-color);
         }
       }
       .box{
@@ -117,12 +117,10 @@
       margin: auto;
     }
   }
-
-
 }
 
 .disabled {
-  opacity: 0.5;            /* يخليه باهت */
-  pointer-events: none;    /* يمنع أي كليك أو hover */
-  user-select: none;       /* يمنع التحديد */
+  opacity: 0.5;
+  pointer-events: none;
+  user-select: none;
 }

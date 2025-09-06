@@ -2,9 +2,7 @@
   <app-skleton />
 }
 @else{
-
 <div class="cart">
-
   <div class="products">
 
     @if(token){
@@ -44,7 +42,7 @@
     }
     }
     @else {
-          @for(product of dataFromStorage;track $index){
+      @for(product of dataFromStorage;track $index){
 
       <div class="product">
           <div class="image">
@@ -104,7 +102,6 @@
       <button>Checkout Now</button>
     </div>
   </div>
-
 </div>
 }
 
