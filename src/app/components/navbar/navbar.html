@@ -1,0 +1,77 @@
+<nav class="navbar">
+  <!-- Logo -->
+  <div class="logo">W&B</div>
+
+  @if (userToken) {
+      <!-- Links -->
+  <ul class="nav-links" [class.active]="isMenuOpen">
+    <li><a routerLink="/user/home">Home</a></li>
+    <li><a routerLink="#">Products</a></li>
+    <li><a routerLink="#">Categories</a></li>
+    <li><a routerLink="#">Contact</a></li>
+  </ul>
+  }@else {
+  <!-- Links -->
+  <ul class="nav-links" [class.active]="isMenuOpen">
+    <li><a routerLink="">Home</a></li>
+    <li><a routerLink="#">Products</a></li>
+    <li><a routerLink="#">Categories</a></li>
+    <li><a routerLink="#">Contact</a></li>
+  </ul>
+  }
+  <!-- Search -->
+  <div class="search-box">
+    <input type="text" placeholder="Search..." [(ngModel)] = "searcValue" />
+    @if (searcValue && searcValue.length) {
+  <div class="searchBlock">
+    @for (product of  allData | searchPipe:searcValue;track $index ) {
+      <div class="product" (click)="getProductData(product.id)">
+        <div class="image">
+          <img [src]="product.imageCover" [alt]="product.slug">
+        </div>
+        <div class="text">
+          <h3>{{product.title}}</h3>
+          <p>{{product.price | currency}}</p>
+        </div>
+      </div>
+    }
+  </div>
+    }
+  </div>
+  @if(userToken){
+  <!-- Icons -->
+  <div class="icons">
+    <button class="cart-btn">
+      <a href="user/cart">
+      <mat-icon>shopping_basket</mat-icon>
+      @if(!loading){
+        <span class="count">{{ count }}</span>
+      }
+      </a>
+    </button>
+    <button class="fav-btn"><a href=""><mat-icon>favorite_border</mat-icon> </a><span class="count">0</span></button>
+    <button class="profile-btn"><span><mat-icon>person_outline</mat-icon> </span> </button>
+    <button (click)="logout()" class="logout-btn"><a href="">Log out</a></button>
+
+  </div>
+  }
+@else {
+  <div class="publicIcons">
+    <button class="cart-btn">
+      <a href="cart">
+      <mat-icon>shopping_basket</mat-icon>
+      <span class="count">{{count}}</span>
+      </a>
+    </button>
+    <button class="fav-btn"><a href=""><mat-icon>favorite_border</mat-icon> </a><span class="count">0</span></button>
+    <button class="register-btn" ><a routerLink="login">Login</a> </button>
+    <button class="register-btn"><a routerLink="register">Register</a> </button>
+
+  </div>
+}
+
+  <!-- Menu Icon (mobile) -->
+  <div class="menu-icon" (click)="toggleMenu()">
+    <mat-icon>menu</mat-icon>
+  </div>
+</nav>

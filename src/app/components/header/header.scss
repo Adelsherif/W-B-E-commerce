@@ -1,0 +1,121 @@
+.navbar {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 15px 20px;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  .logo {
+    font-size: 22px;
+    font-weight: bold;
+  }
+  ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
+    li a {
+      text-decoration: none;
+      transition: 0.3s;
+      color: rgb(74, 73, 73);
+      &:hover {
+        color: #0d6efd;
+      }
+    }
+
+    .search-box input {
+      padding: 10px 10px ;
+      border-radius: 50px;
+      border: 1px solid rgb(184, 181, 181);
+      outline: none;
+    }
+    .icons{
+    button {
+    background: transparent;
+    border: none;
+    font-size: 16px;
+    margin-right: 15px;
+    cursor: pointer;
+    position: relative;
+    a{
+      color: black;
+    }
+
+    &:hover {
+      color: #ff9800;
+    }
+  .count {
+    position: absolute;
+    top: -5px;
+    right: -10px;
+    background: #d0473e;
+    color: #fff;
+    font-size: 12px;
+    padding: 1px 5px;
+    border-radius: 50%;
+  }
+  }
+    }
+    .register-btn {
+      padding: 10px 20px;
+      margin-right: 10px;
+      border: none;
+      border-radius: 10rem;
+      background: black;
+      color: #fff ;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s;
+
+      &:hover {
+        background: #0b5ed7;
+      }
+      a{
+        color: white;
+      }
+    }
+  }
+
+  .menu-btn {
+    display: none;
+    font-size: 24px;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+}
+
+/* الموبايل */
+@media (max-width: 768px) {
+  .navbar {
+    flex-wrap: wrap;
+
+    ul {
+      display: none;
+      flex-direction: column;
+      width: 100%;
+      padding: 10px 0;
+      background: #333;
+
+      li {
+        padding: 10px;
+        text-align: center;
+        a{
+          color: white;
+        }
+      }
+
+      .search-box input {
+        width: 100%;
+      }
+    }
+
+    ul.active {
+      display: flex;
+    }
+
+    .menu-btn {
+      display: block;
+    }
+  }
+}

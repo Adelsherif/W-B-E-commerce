@@ -1,0 +1,110 @@
+@if(loading){
+  <app-skleton />
+}
+@else{
+
+<div class="cart">
+
+  <div class="products">
+
+    @if(token){
+    @for(product of allData;track $index){
+
+      <div class="product">
+          <div class="image">
+              <img [src]="product.product.imageCover" [alt]="product.product" />
+          </div>
+          <div class="box">
+            <h4>{{ product.product.title }}</h4>
+            <p>{{ product.product.category.name }}</p>
+          </div>
+        <div class="price">
+          <p>{{ product.price |currency }}</p>
+        </div>
+        <div class="quantity">
+          <h5>Quantity :{{product.count}}</h5>
+        </div>
+        <div class="total">
+          <p>{{product.price * product.count| currency}}</p>
+        </div>
+        <div class="delete" (click)="deleteProduct(product.product.id); loadingId = product._id">
+          @if (deleteLoader && loadingId == product._id) {
+            <div class="loader"></div>
+          }
+          @else{
+            <mat-icon>delete_outline</mat-icon>
+          }
+        </div>
+      </div>
+    }@empty {
+      <div class="empty">
+      <h3>No Product In Cart</h3>
+      <a href="user/home">Go To Shopping</a>
+      </div>
+    }
+    }
+    @else {
+          @for(product of dataFromStorage;track $index){
+
+      <div class="product">
+          <div class="image">
+              <img [src]="product.imageCover" [alt]="product" />
+          </div>
+          <div class="box">
+            <h4>{{ product.title }}</h4>
+            <p>{{ product.category.name }}</p>
+          </div>
+        <div class="price">
+          <p>{{ product.price |currency }}</p>
+        </div>
+        <div class="quantity">
+          <h5>Quantity : {{product.count}}</h5>
+        </div>
+        <div class="total">
+          <p>{{product.price * product.count | currency}}</p>
+        </div>
+        <div class="delete" (click)="deleteProductFromStorage(product.id,product.count,product.price); loadingId = product._id">
+          @if (deleteLoader && loadingId == product._id) {
+            <div class="loader"></div>
+          }
+          @else{
+            <mat-icon>delete_outline</mat-icon>
+          }
+        </div>
+      </div>
+    }@empty {
+      <div class="empty">
+      <h3>No Product In Cart</h3>
+      <a href="">Go To Shopping</a>
+      </div>
+    }
+    }
+
+
+
+  </div>
+  <div class="checkout">
+    <h2>Check Out Now To Get Your Order</h2>
+    <div class="note">
+      <form>
+        <label for="note">Add Your Note:</label>
+        <input type="text" name="note" id="note" placeholder="Write Your Note"/>
+      </form>
+    </div>
+    <div class="total">
+      <h3>Subtotal: {{total | currency}}</h3>
+    </div>
+    <div class="descount">
+      <form >
+        <input type="text" name="code" id="discount" placeholder="Descount Code"/>
+        <button>Apply</button>
+      </form>
+    </div>
+    <div class="payment">
+      <button>Checkout Now</button>
+    </div>
+  </div>
+
+</div>
+}
+

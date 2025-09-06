@@ -1,0 +1,28 @@
+<div class="categories">
+  <div class="container">
+ <div class="head">
+    <h2>All Categories</h2>
+    <p>Browse all categories on our dear website.
+       You will find everything new at fantastic prices on the occasion of the opening.</p>
+  </div>
+  @if(loading){
+    <div class="body-skeleton"></div>
+  }
+  @else {
+<div class="content">
+    @for (category of allCategories; track $index) {
+      <div class="category">
+        <div class="image">
+          <img [src]="category.image" [alt]="category.slug" />
+        </div>
+        <div class="name">
+          <h3>{{category.name}}</h3>
+        </div>
+      </div>
+    }
+  </div>
+  }
+
+  </div>
+
+</div>

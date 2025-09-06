@@ -1,0 +1,51 @@
+<div class="products">
+  <div class="head">
+ <h1>Our wonderful products</h1>
+  <p>Browse over 40 products available with us
+    and we have great service and quality that we don't need to talk about. Try it yourself.</p>
+  </div>
+
+<div class="container">
+    @if (loading) {
+      <div class="loading">
+ @for(i of range(count);track $index){
+      <div class="loading-card">
+        <div class="loading-image shimmer"></div>
+        <div class="loading-text shimmer"></div>
+        <div class="loading-text short shimmer"></div>
+      </div>
+      }
+      </div>
+
+  }
+  @else {
+  @for(product of allProducts;track $index){
+  <div class="product">
+        <div class="image">
+          <img [src]="product.imageCover" [alt]="product.slug" />
+        </div>
+        <p>{{ product.slug }}</p>
+        <span>{{ product.price | currency  }} </span>
+        <span>Ratings:{{ product.ratingsAverage }}<mat-icon class="icon">star</mat-icon></span>
+        <h5>Available quantity :<span>{{ product.quantity }}</span> piece</h5>
+        <div class="box">
+          <button (click)="putProductToCart(product._id, 1);loadinId = product._id">
+                  @if(addToCart && loadinId == product._id){
+                    <span class="loader"></span>
+                    }
+                    @else{
+                        Add To Cart
+                    }
+          </button>
+
+          <button><mat-icon>favorite_border</mat-icon></button>
+          <button (click)="getProduct(product._id)"> <mat-icon>remove_red_eye</mat-icon></button>
+        </div>
+      </div>
+    }
+  }
+
+</div>
+
+
+</div>

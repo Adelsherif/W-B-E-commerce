@@ -1,0 +1,56 @@
+<div class="login-container">
+  <form [formGroup] = "userData" (ngSubmit)="submit()">
+    <h2>Login</h2>
+
+    <!-- Email -->
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="email" id="email" placeholder="Enter your email" formControlName = "email" />
+      @if(email.touched){
+         @if(email.errors?.['required']){
+          <span>This Filed Requiered</span>
+        }
+        @if(email.errors?.['email']){
+          <span>Invaild Email</span>
+        }
+      }
+    </div>
+
+    <!-- Password -->
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input type="password" id="password" placeholder="Enter your password" formControlName = "password"/>
+        @if(password.touched){
+         @if(password.errors?.['required']){
+          <span>This Filed Requiered</span>
+        }
+        @if(password.errors?.['minlength']){
+          <span>Invaild Password</span>
+        }
+      }
+    </div>
+
+    <!-- Button -->
+    <button type="submit" class="login-btn">
+      @if(loading && !throwError){
+        <span class="loader"></span>
+      }
+      @else {
+        Login
+      }
+    </button>
+    <!-- Error -->
+     <div class="error">
+      @if(throwError){
+          <span>Invaild Account</span>
+        }
+     </div>
+
+
+    <!-- Text Link -->
+    <p class="register-link">
+      Don’t have an account? <a href="register">Register</a>
+    </p>
+  </form>
+</div>
+

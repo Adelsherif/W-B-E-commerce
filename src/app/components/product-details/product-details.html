@@ -1,0 +1,68 @@
+<div class="allDetails" id="#products">
+
+  @if(loading){
+ <app-skleton />
+  }
+@else{
+ <div class="container">
+    <div class="images">
+      <div class="mainImage">
+        <img [src]="imageSrc ? imageSrc : product.imageCover " alt="">
+      </div>
+      <div class="productImage">
+        @for(image of product.images;track $index){
+          <img [src] = `${image}` alt="Image" [ngClass]="image === imageSrc ? 'active' : ''" (click)="imageCover(image)"/>
+        }
+      </div>
+    </div>
+    <div class="details">
+      <h4>{{ product.brand.name }} </h4>
+      <p>{{ product.category.name }} </p>
+      <div class="rating">
+        <span>Ratings Average  : {{ product.ratingsAverage }} </span>
+        <span>Ratings Quantity : {{product.ratingsQuantity}} </span>
+      </div>
+      <h2> {{ product.title }} </h2>
+      <div class="price">
+        @if( product.priceAfterDiscount ){
+          <span > {{ product.priceAfterDiscount |currency }} </span>
+          <span class="oldPrice"><em>{{ product.price | currency}}</em>  </span>
+        }
+        @else {
+        <span>{{ product.price | currency }}</span>
+        }
+      </div>
+      <p>Available quantity : {{ product.quantity }}</p>
+      <p>{{ product.description }} </p>
+      <p>Last Update : {{ product.updatedAt | date }}</p>
+      <div class="box">                 <!--t + t -->
+     <div class="quantity " [ngClass]="!productAdded  && btnClicked ? 'disabled' : ''">
+      <span (click)=" quantity = quantity+1 ; productAdded = false; btnClicked = false ;productInCart=false" >+</span>
+      <span> {{ quantity }} </span>
+      <span (click)="quantity = quantity > 1 ? quantity-1 : quantity; productAdded = false; btnClicked = false;productInCart=false">-</span>
+    </div>
+
+    <button [disabled]="productAdded || btnClicked" (click)="putProductToCart(product.id , quantity)">
+      @if(productAdded && !productInCart){
+        <span>Done</span>
+      }
+      @else{
+        @if(btnClicked){
+          <span class="loader"></span>
+        }
+        @else{
+          <span>Add To Cart</span>
+        }
+      }
+    </button>
+      </div>
+      <div class="productfound">
+        @if (productInCart ) {
+      <p>Product In Cart</p>
+    }
+      </div>
+    </div>
+  </div>
+}
+
+</div>

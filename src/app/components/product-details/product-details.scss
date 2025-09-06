@@ -1,0 +1,128 @@
+.allDetails{
+  padding-top: 30px;
+  padding-bottom: 30px;
+  .container{
+    width: 80%;
+    margin: auto;
+    display: flex;
+    .images{
+      width: 50%;
+
+      .mainImage{
+        width: 100%;
+        img{
+          width: 100%;
+        }
+      }
+      .productImage{
+        width: 100%;
+
+        img{
+          width: 20%;
+          opacity: .7;
+        }
+         .active{
+            opacity: 1;
+          }
+      }
+        @media (max-width:768px) {
+      width: 100%;
+      margin: auto;
+    }
+    }
+    .details{
+      width: 50%;
+      margin-left: 20px;
+      margin-top: 120px;
+      line-height: 2;
+      h4{
+        width: fit-content;
+        color: white;
+        border-radius: 50px;
+        background-color: #D0473E;
+        padding: 0px 5px;
+      }
+      h2{
+        color: #D0473E;
+      }
+        .price{
+          font-size: 1.4em;
+          font-weight: 500;
+          color: #D0473E;
+          .oldPrice{
+            text-decoration: line-through;
+            color: rgb(159, 159, 159);
+          }
+        }
+      p{
+        max-width: 100%;
+        font-size: 1.3em;
+        &:last-of-type{
+          color: #D0473E;
+        }
+      }
+      .box{
+        display: flex;
+        margin-top: 30px;
+        cursor: pointer;
+        .quantity {
+        width: 30%;
+        text-align: center;
+        background-color: rgb(247, 244, 244);
+        font-size: 1.5em;
+        padding: 6px 10px;
+        border-radius: 50px;
+        span{
+          &:not(&:last-of-type){
+            padding-right: 20px;
+          }
+        }
+      }
+      button{
+        width: 60%;
+        background-color: black;
+        color: white;
+        font-size: 1.5em;
+        padding: 6px 10px;
+        border-radius: 50px;
+        border: none;
+        cursor: pointer;
+
+        .loader {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 3px solid white;
+  border-top: 2px solid transparent;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+      }
+      }
+      @media (max-width:768px) {
+      width: 90%;
+      margin: auto;
+    }
+    }
+    @media (max-width:768px) {
+      width: 90%;
+      flex-wrap: wrap;
+      margin: auto;
+    }
+  }
+
+
+}
+
+.disabled {
+  opacity: 0.5;            /* يخليه باهت */
+  pointer-events: none;    /* يمنع أي كليك أو hover */
+  user-select: none;       /* يمنع التحديد */
+}

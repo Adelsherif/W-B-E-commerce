@@ -1,0 +1,39 @@
+<nav class="navbar">
+  <!-- Logo -->
+  <div class="logo">B&W</div>
+
+  <!-- Bar responsive -->
+  <button class="menu-btn" (click)="toggleMenu()">☰</button>
+
+  <!-- Likns  -->
+  <ul [class.active]="isMenuOpen">
+    <li><a href="#">Home</a></li>
+    <li><a href="#">About</a></li>
+    <li><a href="#">Services</a></li>
+    <li><a href="#">Contact</a></li>
+
+    <!-- Search -->
+    <li class="search-box">
+      <input type="text" placeholder="Search..." />
+    </li>
+
+    <li class="icons">
+  <div class="icons">
+    <button class="cart-btn">
+      <a href="cart">
+      <mat-icon>shopping_basket</mat-icon>
+      <span class="count">{{count}}</span>
+      </a>
+    </button>
+    <button class="fav-btn"><a href=""><mat-icon>favorite_border</mat-icon> </a><span class="count">0</span></button>
+  </div>
+    </li>
+    <!-- Register -->
+    <li>
+      <button class="register-btn" ><a routerLink="login">Login</a> </button>
+      <button class="register-btn"><a routerLink="register">Register</a> </button>
+    </li>
+  </ul>
+</nav>
+
+
