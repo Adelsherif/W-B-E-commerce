@@ -43,9 +43,11 @@ body {
 *{
   padding: 0;
   margin: 0;
+  overflow: hidden;
 }
 body,html {
   font-family:"Jost", sans-serif;
+
 }
 
 html, body { height: 100%; }
