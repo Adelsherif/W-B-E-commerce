@@ -81,4 +81,7 @@ numberOfCart(){
     }
   }
 
+  scrollTo(element: HTMLElement) {
+  element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
 }

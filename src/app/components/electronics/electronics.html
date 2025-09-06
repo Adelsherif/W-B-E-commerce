@@ -1,11 +1,10 @@
-<div class="products" #products>
-  <div class="head">
+<div class="products">
+    <div class="head">
  <h1>Our wonderful products</h1>
   <p>Browse over 40 products available with us
     and we have great service and quality that we don't need to talk about. Try it yourself.</p>
   </div>
-
-<div class="container">
+  <div class="container">
     @if (loading) {
       <div class="loading">
  @for(i of range(count);track $index){
@@ -19,7 +18,7 @@
 
   }
   @else {
-  @for(product of allProducts;track $index){
+@for (product of allProducts | categoryPipe:"Electronics"; track $index) {
   <div class="product">
         <div class="image">
           <img [src]="product.imageCover" [alt]="product.slug" />
@@ -30,19 +29,21 @@
         <h5>Available quantity :<span>{{ product.quantity }}</span> piece</h5>
         <div class="box">
           <button (click)="putToCart(product._id, 1);loadingId = product._id">
-                  @if(loadingId === product._id){
-                    <span class="loader"></span>
-                    }
-                    @else{
-                        Add To Cart
-                    }
+              @if(loadingId === product._id){
+                  <span class="loader"></span>
+                  }
+              @else{
+                Add To Cart
+                  }
           </button>
 
           <button><mat-icon>favorite_border</mat-icon></button>
           <button (click)="getProductDetails(product._id)"> <mat-icon>remove_red_eye</mat-icon></button>
         </div>
       </div>
-    }
+}
   }
 </div>
 </div>
+
+

@@ -12,7 +12,12 @@ export const routes: Routes = [
       },
        {path: 'details/:id',loadComponent: () => import('./components/product-details/product-details').then(c => c.ProductDetails)
       },
-      {path: 'cart' , loadComponent:() => import('./components/cart/cart').then(c => c.Cart)}
+      {path: 'cart' , loadComponent:() => import('./components/cart/cart').then(c => c.Cart)},
+      {path: 'womenclothing' , loadComponent:() => import('./components/womenclothing/womenclothing').then(c => c.Womenclothing)},
+      {path: 'menclothing' , loadComponent:() => import('./components/menclothing/menclothing').then(c => c.Menclothing)},
+      {path: 'electronics' , loadComponent:() => import('./components/electronics/electronics').then(c => c.Electronics)},
+
+
 
     ]
   },
@@ -25,7 +30,10 @@ export const routes: Routes = [
       },
       {path: 'details/:id',loadComponent: () => import('./components/product-details/product-details').then(c => c.ProductDetails)
       },
-      {path: 'cart' , loadComponent:() => import('./components/cart/cart').then(c => c.Cart)}
+      {path: 'cart' , loadComponent:() => import('./components/cart/cart').then(c => c.Cart)},
+      {path: 'womenclothing' , loadComponent:() => import('./components/womenclothing/womenclothing').then(c => c.Womenclothing)},
+      {path: 'menclothing' , loadComponent:() => import('./components/menclothing/menclothing').then(c => c.Menclothing)},
+      {path: 'electronics' , loadComponent:() => import('./components/electronics/electronics').then(c => c.Electronics)},
     ],
     canActivate:[authGuard]
   },

@@ -16,8 +16,5 @@ if(data){
 return data.filter(item => item.title.includes(value));
 
 }
-
-
   }
-
 }
